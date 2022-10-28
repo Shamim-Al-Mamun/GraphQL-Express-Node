@@ -79,7 +79,7 @@ app.use(
 
 const PORT = 4000;
 app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
+  console.log(`Server  is running at http://localhost:${PORT}`);
 });
 
 // Resource : https://www.youtube.com/watch?v=dJjP0SbdIt0
