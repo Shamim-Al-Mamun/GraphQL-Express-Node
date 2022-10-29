@@ -5,6 +5,8 @@ const axios = require("axios");
 
 const app = express();
 
+let message = "This is a message" ;
+
 const schema = buildSchema(`
 
     type Post {
@@ -26,6 +28,17 @@ const schema = buildSchema(`
         getUser : User
         getUsers : [User]
         getPostsFromExternalAPI : [Post]
+        message : String
+    }
+    input UserInput {
+        name: String!
+        age: Int!
+        college: String!
+    }
+
+    type Mutation {
+        setMessage(newMessage: String) : String
+        createUser(user : UserInput) : User
     }
 
 `);
@@ -66,6 +79,17 @@ const root = {
     );
     return result?.data;
   },
+  setMessage: ({newMessage}) =>{
+    message = newMessage;
+    return message
+  }, 
+  message : () =>{
+    return message
+  },
+  createUser : (args) =>{
+    
+    return args.user
+  }
 };
 
 app.use(
